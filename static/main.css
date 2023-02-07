@@ -1,0 +1,30 @@
+body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  td {
+    vertical-align: middle;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  
+  .blob_button {
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  
+  .blob_button:hover {
+    background-color: grey; /* Green */
+    color: white;
+  }

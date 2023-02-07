@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='main.css') }}"
+    </head>
+    <body>
+        <div class=blobs>
+            <p>Current uploaded photos:</p>
+            <table class="blob_list">
+              <tbody>
+                {% for blob in container %}
+                <tr>
+                  <td>{{ blob }}</td>
+                  <script type=text/javascript>
+                    $(function() {
+                    $("#mybutton{{ loop.index }}").click(function (event) {
+                        $.get('/generatelink', {"blob": "{{ blob }}"}, function (output) {
+                        $("#output").text(output);
+                        });
+                    });
+                    });
+                  </script> 
+                  <td><input type = "button" class="blob_button" id = "mybutton{{ loop.index }}" value = "Click Here" /></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+        <div class="share_link">
+            <p id="output">The output will be displayed here.</p>
+    </body>
