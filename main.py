@@ -3,6 +3,7 @@ Main python file that is ran to launch the app.
 '''
 import datetime as dt
 import sys
+import os
 
 from azure.storage.blob import BlobServiceClient, generate_blob_sas
 import PySide6.QtCore as core
@@ -32,6 +33,7 @@ class Containers(Accounts):
     '''
     def __init__(self, key, account, container_name):
         super().__init__(key, account)
+        self.container_name = container_name
         self.container_client = self.blob_service_client.get_container_client(
             container_name)
 
@@ -87,7 +89,6 @@ class Forms(widget.QDialog):
         self.file_path_text.setReadOnly(True)
         self.to_upload_button_obj.clicked.connect(self.to_upload_button)
         self.file_path = None
-        self.file_name = None
         self.file_extension = None
         # blob upload section
         self.upload_button_obj = widget.QPushButton("Share image")
@@ -121,9 +122,12 @@ class Forms(widget.QDialog):
         '''
         self.file_path = widget.QFileDialog.getOpenFileName(
             caption="Open File", dir = core.QDir.homePath(),
-                filter = "Images (*.png *.xpm *.jpg)")[0]
-        self.file_name = self.file_path[self.file_path.rfind("/")+1:]
-        self.file_extension = self.file_path[self.file_path.rfind(".")+1:]
+                filter = "Images (*.png *.xpm *.jpeg *.jpg)")[0]
+        file_size = os.path.getsize(self.file_path)
+        if file_size > 1000000:
+            self.file_extension = 'jpeg'
+        else:
+            self.file_extension = 'png'
 
     def to_upload_button(self):
         '''

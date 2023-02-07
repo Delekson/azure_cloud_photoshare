@@ -2,7 +2,9 @@
 This app uses the Azure Blob Python SDK to provide photosharing functionality.
 
 ## Current Set-Up
-This code relies on on the following modules: datetime which is pre-installed. sys which is pre-installed. azure.storage.blob installed using pip install azure-storage-blob. PySide6 installed using pip install PySide6.
+This code (main.py) relies on on the following modules: **datetime** which is **pre-installed**. **sys** which is **pre-installed**. **azure.storage.blob** installed using `pip install azure-storage-blob`. **PySide6** installed using `pip install PySide6`.
+
+For the flask version, you will need **flask_main.py** (I have decided to split this from main.py so it easier to tweak), **flask** installed using `pip install flask`.
 
 You will also need to have set up an Azure Service Account with a storage account along with a blob container within that storage account (and permission to make changes to the storage account via an access key).
 
@@ -14,6 +16,8 @@ account_name=<account name>
 container_name=<container name>
 ```
 ## Future Possible Features
+Currently I am working on moving away from using QT for the UI and shift towards using Flask to benefit from its light framework.
+
 My to do list to take the app further (features may or not be developed due to time constraints and resourcing availability): 
 +Better front-end by potentially using AirBnB guidelines or Material-Ui esque 
 +Accounts (general idea being a container per user) 
