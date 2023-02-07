@@ -1,6 +1,33 @@
 body {
     font-family: 'Roboto', sans-serif;
   }
+
+div.list_uploads {
+	--b: 4px; /* border width */
+	--c: 3em; /* corner size */
+	--r: 2em; /* corner rounding */
+	position: relative;
+	margin: 35px;
+	border: solid var(--b) transparent;
+	padding: 20px;
+}
+
+div.list_uploads::before {
+		position: absolute;
+		z-index: -1;
+		inset: calc(-1*var(--b));
+		border: inherit;
+		border-radius: var(--r);
+		background: blueviolet border-box;
+		--corner: 
+			conic-gradient(from -90deg at var(--c) var(--c), red 25%, #0000 0) 
+				0 0/ calc(100% - var(--c))  calc(100% - var(--c)) border-box;
+		--inner: conic-gradient(red 0 0) padding-box;
+		-webkit-mask: var(--corner), var(--inner);
+		-webkit-mask-composite: source-out;
+						mask: var(--corner) subtract, var(--inner);
+		content: ''
+}
   
   table {
     width: 100%;
@@ -15,6 +42,10 @@ body {
     font-weight: 300;
   }
   
+  td.blob_button_t {
+    text-align: right;
+  }
+
   .blob_button {
     background-color: white;
     border: 2px solid grey;
@@ -27,4 +58,28 @@ body {
   .blob_button:hover {
     background-color: grey; /* Green */
     color: white;
+  }
+
+  #output {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 200;
+    padding-left: 10px;
+  }
+
+  div.share_link {
+    margin-top: 10px;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 10px;
+  }
+  
+  #file_select_button {
+    width: 100%;
+    height: 100%;
+  }
+
+  #file_select {
+    width: 100%;
+    height: 50%;
   }

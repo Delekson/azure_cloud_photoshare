@@ -18,12 +18,13 @@ container_name=<container name>
 ## Future Possible Features
 Currently I am working on moving away from using QT for the UI and shift towards using Flask to benefit from its light framework.
 
-My to do list to take the app further (features may or not be developed due to time constraints and resourcing availability): 
-+Better front-end by potentially using AirBnB guidelines or Material-Ui esque 
-+Accounts (general idea being a container per user) 
-+Robust way of storing authentication information 
-+Ability to view image once image file is selected 
-+Ability to see existing images +Ability to regenerate share links to existing images 
-+Ability to manage images more specifically ability to delete and undelete 
-+Look into making code more efficient 
-+Url shortening for share_link
+My to do list to take the app further (features may or not be developed due to time constraints and resourcing availability but features have been prioritized using MoSCoW): 
++ Better front-end by potentially using AirBnB guidelines or Material-Ui esque 
++ Accounts (general idea being a container per user) & sessions
++ Robust way of storing authentication information 
++ Ability to view image once image file is selected 
++ Ability to see existing images +Ability to regenerate share links to existing images 
++ Ability to manage images more specifically ability to delete and undelete 
++ Look into making code more efficient (Want)
++ Url shortening for share_link (Could)
++ Add error handling capabilities (Must)

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+ <div id="file_select">
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <label for="blob_name">Image Name:</label>
+      <input type=text id="blob_name" name="blob_name">
+      <input type=submit value=Upload>
+    </form>
+ </div>
+ <div>
+    {% with messages = get_flashed_messages() %}
+     {% if messages %}
+       {% for message in messages %}
+         <p>{{ message }}</p>
+       {% endfor %}
+     {% endif %}
+    {% endwith %}
+ </div>
+ <div class="links">
+    <a href=http://127.0.0.1:5000/>Home</a>
+    <a href=http://127.0.0.1:5000/list_uploads>List Uploads</a>
+ </div>
+{% endblock %}

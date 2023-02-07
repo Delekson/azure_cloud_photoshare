@@ -50,13 +50,12 @@ class Blobs(Containers):
             blob=blob_name)
         self.link = None
 
-    def upload(self, file_path):
+    def upload(self, data):
         '''
         Uploads the selected file to the connected container named as a given
         blob name during Blobs class init.
         '''
-        with open(file=file_path, mode="rb") as data:
-            self.blob_client.upload_blob(data)
+        self.blob_client.upload_blob(data)
 
     def share_link(self, policy):
         '''
@@ -69,3 +68,7 @@ class Blobs(Containers):
                         account_key=self.private_key, policy_id=policy)
         self.link = f"{self.blob_client.primary_endpoint}?{sas}"
         return self.link
+    
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ['png', 'jpg', 'jpeg']

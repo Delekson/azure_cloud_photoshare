@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class=blobs>
+ <h2>Current uploaded photos:</h2>
+ <div class=list_uploads>
+  <table class="blob_list">
+   <tbody>
+    {% for blob in container %}
+    <tr>
+     <td class = "blob_t">{{ blob }}</td>
+     <script type=text/javascript>
+       $(function() {
+       $("#mybutton{{ loop.index }}").click(function (event) {
+           $.get('/generatelink', {"blob": "{{ blob }}"}, function (output) {
+           $("#output").html("<a href="+output+">Download Image</a>");
+           });
+       });
+       });
+     </script> 
+     <td class = "blob_button_t"><input type = "button" class="blob_button" id = "mybutton{{ loop.index }}" value = "Generate Link" /></td>
+    </tr>
+    {% endfor %}
+   </tbody>
+  </table>
+  <div class="share_link">
+   <p id="output">No share links generated.</p>
+  </div>
+ </div>
+</div>
+<div class="links">
+ <a href=http://127.0.0.1:5000/>Home</a>
+ <a href=http://127.0.0.1:5000/upload>Upload File</a>
+</div>
+{% endblock %}
