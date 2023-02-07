@@ -5,6 +5,8 @@ import datetime as dt
 import sys
 import os
 
+from azure.storage.blob import BlobServiceClient, generate_blob_sas
+
 class Accounts:
     '''
     The Accounts class houses the client used to connect the storage account
