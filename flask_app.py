@@ -44,12 +44,14 @@ def upload_home():
         elif file.filename == '':
             flash('Please select an image file.')
         elif "image" not in file.content_type:
-            flash('Please select an image file (png or jpg/jpeg).')
+            flash('Please select an image file.')
         elif blob_name in container_blob.list_blobs():
             flash('Image name already exists. Please resubmit with a different name.')
+        elif blob_name == '':
+            flash('Please specify a name for the file upload.')
         else:
             blob_client = flask_main.Blobs(container_blob.private_key, container_blob.account_name,
-                     container_blob.container_name, blob_name)
+                     container_blob.container_name, f"{blob_name}.jpeg")
             blob_client.upload(file)
             flash('File Uploaded!')
         return redirect(request.url)

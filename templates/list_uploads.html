@@ -1,35 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class=blobs>
- <h2>Current uploaded photos:</h2>
- <div class=list_uploads>
-  <table class="blob_list">
+<div class="blobs_card">
+ <span class="headline-small color-primary-text">Current uploaded photos</span>
+  <table class="blob_list_table">
    <tbody>
     {% for blob in container %}
     <tr>
-     <td class = "blob_t">{{ blob }}</td>
+     <td class = "body-medium color-primary-text list_blob">{{ blob }}</td>
      <script type=text/javascript>
        $(function() {
        $("#mybutton{{ loop.index }}").click(function (event) {
            $.get('/generatelink', {"blob": "{{ blob }}"}, function (output) {
-           $("#output").html("<a href="+output+">Download Image</a>");
+           $("#output").html('<p class="body-medium link_output" id="output_link">'+output+'</p>');
+           $("#share-link-buttons").html('<p class="body-medium link_output" id="output_link">'+output+'</p>');
+           
            });
        });
        });
      </script> 
-     <td class = "blob_button_t"><input type = "button" class="blob_button" id = "mybutton{{ loop.index }}" value = "Generate Link" /></td>
+     <td class = "blob_button_table"><input type = "button" class="title-small blob_button" id = "mybutton{{ loop.index }}" value = "Generate Link" /></td>
     </tr>
     {% endfor %}
    </tbody>
   </table>
-  <div class="share_link">
-   <p id="output">No share links generated.</p>
+  <div class="share_link tertiary-container" id="output">
+   <p class="body-medium link_output" id="output_link">No share links generated.</p>
   </div>
- </div>
+  <div class="share-link-buttons">
+    <script type=text/javascript>
+      $(function() {
+      $("#clipboard").click(function (event) {
+        var copyText = document.getElementById("output_link").innerHTML;
+        if (copyText != "No share links generated.") {
+          navigator.clipboard.writeText(copyText);
+        }
+       });
+      });
+    </script> 
+    <button class="title-small blob_button" id="clipboard">Copy to clipboard</button>
+    <script type=text/javascript>
+      $(function() {
+      $("#download").click(function (event) {
+        var copyText = document.getElementById("output_link").innerHTML;
+        if (copyText != "No share links generated.") {
+          window.open(copyText, '_blank');
+        }
+       });
+      });
+    </script> 
+    <button class="title-small blob_button" id="download" style = "width: 158.8px;;">Download file</button>
+  </div>
 </div>
 <div class="links">
- <a href=http://127.0.0.1:5000/>Home</a>
- <a href=http://127.0.0.1:5000/upload>Upload File</a>
+
 </div>
 {% endblock %}

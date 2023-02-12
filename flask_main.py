@@ -2,9 +2,6 @@
 Main python file that is ran to launch the app.
 '''
 import datetime as dt
-import sys
-import os
-
 from azure.storage.blob import BlobServiceClient, generate_blob_sas
 
 class Accounts:
@@ -68,7 +65,3 @@ class Blobs(Containers):
                         account_key=self.private_key, policy_id=policy)
         self.link = f"{self.blob_client.primary_endpoint}?{sas}"
         return self.link
-    
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ['png', 'jpg', 'jpeg']

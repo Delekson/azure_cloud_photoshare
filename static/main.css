@@ -1,85 +1,136 @@
-body {
-    font-family: 'Roboto', sans-serif;
-  }
+@import url(tokens.css);
+@import url(typography.module.css);
+@import url(colors.module.css);
 
-div.list_uploads {
-	--b: 4px; /* border width */
-	--c: 3em; /* corner size */
-	--r: 2em; /* corner rounding */
-	position: relative;
-	margin: 35px;
-	border: solid var(--b) transparent;
-	padding: 20px;
+/* Add a black background color to the top navigation */
+.topnav {
+  overflow: hidden;
+  margin: auto auto 12px auto;
+  width: 376px;
 }
 
-div.list_uploads::before {
-		position: absolute;
-		z-index: -1;
-		inset: calc(-1*var(--b));
-		border: inherit;
-		border-radius: var(--r);
-		background: blueviolet border-box;
-		--corner: 
-			conic-gradient(from -90deg at var(--c) var(--c), red 25%, #0000 0) 
-				0 0/ calc(100% - var(--c))  calc(100% - var(--c)) border-box;
-		--inner: conic-gradient(red 0 0) padding-box;
-		-webkit-mask: var(--corner), var(--inner);
-		-webkit-mask-composite: source-out;
-						mask: var(--corner) subtract, var(--inner);
-		content: ''
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 24px;
+  border-color: var(--md-sys-color-primary-light);
+  height: auto;
+  width: 90px
 }
-  
-  table {
-    width: 100%;
-  }
-  
-  td {
-    vertical-align: middle;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-  }
-  
-  td.blob_button_t {
-    text-align: right;
-  }
 
-  .blob_button {
-    background-color: white;
-    border: 2px solid grey;
-    border-radius: 10px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-  }
-  
-  .blob_button:hover {
-    background-color: grey; /* Green */
-    color: white;
-  }
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: var(--md-sys-color-primary-light);
+  color: white;
+  cursor:pointer;
+}
 
-  #output {
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    font-weight: 200;
-    padding-left: 10px;
-  }
+/* Add a color to the active/current link */
+.topnav a:active {
+  border-width: medium;
+}
 
-  div.share_link {
-    margin-top: 10px;
-    border-style: solid;
-    border-width: thin;
-    border-radius: 10px;
-  }
-  
-  #file_select_button {
-    width: 100%;
-    height: 100%;
-  }
+.blobs_card {
+  background-color: var(--md-sys-color-surface-variant-light);
+  border-radius: 24px;
+	padding: 24px;
+  margin-top: 12px;
+}
 
-  #file_select {
-    width: 100%;
-    height: 50%;
-  }
+.blob_list_table {
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 6px;
+}
+
+td.blob_button_table {
+  text-align: right;
+}
+
+.blob_button {
+  background-color: white;
+  height: 40px;
+  border: thin solid grey;
+  border-radius: 24px;
+  color: var(--md-sys-color-primary-light);
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.blob_button:hover {
+  background-color: var(--md-sys-color-primary-light);
+  color: white;
+  cursor:pointer; 
+}
+
+.share_link {
+  border-radius: 24px;
+}
+
+.link_output {
+  padding: 12px;
+  margin: 0px;
+  word-break: break-all;
+}
+
+.share-link-buttons {
+  width: 321.6px;
+  margin: auto;
+  padding-top: 12px;
+  align-items: center;
+}
+
+.file-input {
+  color: transparent;
+  height: 40px;
+  border-radius: 24px;
+}
+
+.file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.file-input::before {
+  content: 'Select your image';
+  position: absolute;
+  color: var(--md-sys-color-primary-light);
+  z-index: +1;
+  width: 268px;
+  height: 40px;
+  text-align: center;
+  display:inline-block;
+  background-color: white;
+  border: thin solid grey;
+  border-radius: 24px;
+  padding-top: 20px;
+}
+
+.file-input:hover::before {
+  background-color: var(--md-sys-color-primary-light);
+  color: white;
+  cursor:pointer; 
+}
+
+.select-image {
+  width:270px;
+  height: 62px;
+  margin:auto;
+}
+
+.blob_name {
+  width: 270px;
+  height: 24px;
+  background-color: white;
+  border: thin solid grey;
+  border-radius: 24px;
+  padding-left: 12px;
+}
+
+.centre-div {
+  width:286px;
+  margin:auto;
+  margin-top: 12px;
+}
